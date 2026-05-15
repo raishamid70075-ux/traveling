@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    
+    <title>Adventure Journal — Inspirasi Penjelajahan Alam</title>
+    <meta name="description" content="Informasi ekspedisi, panduan petualangan, dan daftar perlengkapan terbaik."/>
+    
+    <link rel="icon" type="image/svg+xml" href="https://cdn-icons-png.flaticon.com/512/826/826070.png"/>
+
+    <!-- Fonts: Poppins (Heading) & Lato (Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,700;0,900;1,300&family=Lato:wght@400;700&family=Material+Symbols+Outlined:wght@300&display=swap" rel="stylesheet"/>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-container": "#131b2e",
+                        "primary": "#000000",
+                        "on-primary": "#ffffff",
+                        "warning-amber": "#F59E0B",
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        html, body { overflow-x: hidden; }
+        .glass { 
+
+            background: rgba(255, 255, 255, 0.04); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link.active { color: #F59E0B; }
+        
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        details summary::-webkit-details-marker { display: none; }
+        summary:focus { outline: none; }
+
+       
+    </style>
+</head>
+
+<body class="bg-primary text-on-primary antialiased min-h-screen flex flex-col font-sans">
+
+<!-- Navbar -->
+<nav class="bg-primary-container/80 backdrop-blur-md sticky top-0 border-b border-white/10 z-[100]">
+    <div class="flex justify-between items-center w-full px-6 md:px-16 py-6 max-w-7xl mx-auto">
+        <div class="font-heading text-xl font-black text-warning-amber tracking-tighter">Adventure Journal.</div>
+        
+        <div class="hidden md:flex items-center gap-10 font-bold text-[11px] uppercase tracking-[0.2em]">
+            <a class="nav-link hover:text-warning-amber transition-colors duration-300" href="#home">Home</a>
+            <a class="nav-link hover:text-warning-amber transition-colors duration-300" href="#expeditions">Expeditions</a>
+            <a class="nav-link hover:text-warning-amber transition-colors duration-300" href="#about">About</a>
+            <a class="nav-link hover:text-warning-amber transition-colors duration-300" href="#pricing">Pricing</a>
+            <a class="nav-link hover:text-warning-amber transition-colors duration-300" href="#contact">Contact</a>
+        </div>
+
+        <button type="button" id="menu-toggle" class="md:hidden text-on-primary">
+            <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-primary-container border-b border-white/10 px-6 py-8 flex flex-col gap-6 font-bold uppercase tracking-widest text-xs">
+        <a href="#home">Home</a>
+        <a href="#expeditions">Expeditions</a>
+        <a href="#about">About</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<main class="flex-grow">
+    <!-- HERO SECTION -->
+    <section id="home" class="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img alt="Mountain" class="w-full h-full object-cover opacity-60" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920"/>
+            <div class="absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/60 to-primary"></div>
+        </div>
+        <div class="relative z-10 text-center max-w-5xl px-6" data-aos="fade-up">
+            <span class="text-warning-amber text-xs font-bold tracking-[0.5em] uppercase mb-4 block">Official Exploration Guide</span>
+            <h1 class="hero-title text-5xl md:text-8xl font-black mb-8">Explore The <span class="font-light italic">Unseen.</span></h1>
+            <p class="text-md md:text-lg text-on-primary/60 mb-12 max-w-xl mx-auto font-sans leading-relaxed">
+                Menyajikan catatan perjalanan terdalam dari sudut-sudut dunia yang belum terjamah.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#expeditions" class="bg-warning-amber text-primary px-10 py-4 rounded-full font-bold tracking-widest uppercase text-[11px] hover:scale-105 transition-transform duration-300">Lihat Ekspedisi</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPEDITIONS (4 Cards) -->
+    <section id="expeditions" class="py-32 max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <h2 class="font-heading text-4xl font-black italic" data-aos="fade-right">Featured Expeditions</h2>
+            <p class="text-on-primary/40 max-w-sm text-sm font-sans">Koleksi perjalanan pilihan musim ini yang menantang batas fisik dan mental.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="group glass rounded-[2rem] overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                <div class="h-60 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400" alt="Alpine Peak Expedition" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                </div>
+                <div class="p-8">
+                    <h4 class="font-heading font-bold text-lg mb-2">Alpine Peak</h4>
+                    <p class="text-xs text-on-primary/50 leading-relaxed font-sans mb-6">Menaklukkan dinding es vertikal di Swiss.</p>
+                    <a href="#" class="text-warning-amber font-bold text-xs tracking-widest hover:underline">Selengkapnya →</a>
+                </div>
+            </div>
+            <div class="group glass rounded-[2rem] overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                <div class="h-60 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=400" alt="Nordic Fjords Kayaking" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                </div>
+                <div class="p-8">
+                    <h4 class="font-heading font-bold text-lg mb-2">Nordic Water</h4>
+                    <p class="text-xs text-on-primary/50 leading-relaxed font-sans mb-6">Eksplorasi kayak di antara tebing Fjord.</p>
+                    <a href="#" class="text-warning-amber font-bold text-xs tracking-widest hover:underline">Selengkapnya →</a>
+                </div>
+            </div>
+            <div class="group glass rounded-[2rem] overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                <div class="h-60 overflow-hidden">
+                    <img src="https://myasset-nine.vercel.app/asset/swiss.jpg" alt="Sahara Desert Navigation" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                </div>
+                <div class="p-8">
+                    <h4 class="font-heading font-bold text-lg mb-2">Dune Walker</h4>
+                    <p class="text-xs text-on-primary/50 leading-relaxed font-sans mb-6">Navigasi bintang di luasnya Sahara.</p>
+                    <a href="#" class="text-warning-amber font-bold text-xs tracking-widest hover:underline">Selengkapnya →</a>
+                </div>
+            </div>
+            <div class="group glass rounded-[2rem] overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                <div class="h-60 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?auto=format&fit=crop&w=400" alt="Amazon Jungle Survival" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                </div>
+                <div class="p-8">
+                    <h4 class="font-heading font-bold text-lg mb-2">Green Hell</h4>
+                    <p class="text-xs text-on-primary/50 leading-relaxed font-sans mb-6">Survival di kedalaman hutan Amazon.</p>
+                    <a href="#" class="text-warning-amber font-bold text-xs tracking-widest hover:underline">Selengkapnya →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A. FEATURE HIGHLIGHT STRIP -->
+    <section class="py-32 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20">
+            <h2 class="font-heading text-4xl font-black italic mb-4" data-aos="fade-up">Mengapa Adventure Journal?</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="100">
+            <div class="glass p-10 rounded-[2.5rem] text-center">
+                <span class="material-symbols-outlined text-6xl text-warning-amber mb-6 block">explore</span>
+                <h3 class="font-heading font-bold text-xl mb-4">Destinasi Terkurasi</h3>
+                <p class="text-sm text-on-primary/60 font-sans">Hanya lokasi yang telah diverifikasi oleh tim lapangan kami selama 10 tahun ekspedisi.</p>
+            </div>
+            <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="200">
+                <span class="material-symbols-outlined text-6xl text-warning-amber mb-6 block">groups</span>
+                <h3 class="font-heading font-bold text-xl mb-4">Komunitas Nyata</h3>
+                <p class="text-sm text-on-primary/60 font-sans">Terhubung dengan 50,000+ penjelajah aktif dari seluruh kepulauan Nusantara.</p>
+            </div>
+            <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="300">
+                <span class="material-symbols-outlined text-6xl text-warning-amber mb-6 block">verified</span>
+                <h3 class="font-heading font-bold text-xl mb-4">Panduan Bersertifikat</h3>
+                <p class="text-sm text-on-primary/60 font-sans">Setiap konten direview oleh ahli survival dan guide profesional berlisensi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- B. EDITORIAL / BLOG PREVIEW -->
+    <section class="py-32 bg-primary-container/20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="font-heading text-5xl font-black italic mb-4" data-aos="fade-up">Dari Jurnal Kami</h2>
+                <p class="text-on-primary/50 text-lg font-sans" data-aos="fade-up" data-aos-delay="200">Tulisan terbaru dari lapangan.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="glass rounded-[2rem] overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-2 bg-gradient-to-r from-warning-amber to-yellow-400"></div>
+                    <div class="p-8">
+                        <span class="inline-block bg-warning-amber text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Gear Review</span>
+                        <h3 class="font-heading font-bold text-xl mb-4 leading-tight group-hover:text-warning-amber transition-colors">5 Sepatu Trekking Terbaik 2026</h3>
+                        <p class="text-on-primary/50 text-sm leading-relaxed mb-6 font-sans">Kami uji selama 3 bulan di medan berbeda — inilah hasilnya.</p>
+                        <a href="#" class="text-warning-amber font-bold text-xs tracking-widest hover:underline">Baca Selengkapnya →</a>
+                    </div>
+                </div>
+                <div class="glass rounded-[2rem] overflow-hidden group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-2 bg-gradient-to-r from-warning-amber to-yellow-400"></div>
+                    <div class="p-8">
+                        <span class="inline-block bg-warning-amber text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Survival</span>
+                        <h3 class="font-heading font-bold text-xl mb-4 leading-tight group-hover:text-warning-amber transition-colors">Bertahan di Badai Salju Tanpa Tenda</h3>
+                        <p class="text-on-primary/50 text-sm leading-relaxed mb-6 font-sans">Teknik bangunan quinzhee yang menyelamatkan tim kami di Himalaya.</p>
+                        <a href="#" class="text-warning-amber font-bold text-xs tracking-widest hover:underline">Baca Selengkapnya →</a>
+                    </div>
+                </div>
+                <div class="glass rounded-[2rem] overflow-hidden group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-2 bg-gradient-to-r from-warning-amber to-yellow-400"></div>
+                    <div class="p-8">
+                        <span class="inline-block bg-warning-amber text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4">Destinasi</span>
+                        <h3 class="font-heading font-bold text-xl mb-4 leading-tight group-hover:text-warning-amber transition-colors">Raja Ampat Off-Season: Sepi, Murni, Luar Biasa</h3>
+                        <p class="text-on-primary/50 text-sm leading-relaxed mb-6 font-sans">Panduan lengkap mengunjungi Papua Barat di luar musim utama.</p>
+                        <a href="#" class="text-warning-amber font-bold text-xs tracking-widest hover:underline">Baca Selengkapnya →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- C. STATISTICS COUNTER BAR -->
+    <section class="py-20 bg-primary-container">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24" data-aos="zoom-in">
+            <div class="flex-1 text-center md:text-left">
+                <div class="font-heading font-black text-4xl text-warning-amber">50.000+</div>
+                <div class="text-xs uppercase tracking-widest text-on-primary/40 font-sans">Penjelajah Aktif</div>
+            </div>
+            <div class="w-px h-12 bg-white/10 hidden md:block"></div>
+            <div class="flex-1 text-center md:text-left">
+                <div class="font-heading font-black text-4xl text-warning-amber">120+</div>
+                <div class="text-xs uppercase tracking-widest text-on-primary/40 font-sans">Destinasi Terdokumentasi</div>
+            </div>
+            <div class="w-px h-12 bg-white/10 hidden md:block"></div>
+            <div class="flex-1 text-center md:text-left">
+                <div class="font-heading font-black text-4xl text-warning-amber">8 Tahun</div>
+                <div class="text-xs uppercase tracking-widest text-on-primary/40 font-sans">Pengalaman Lapangan</div>
+            </div>
+            <div class="w-px h-12 bg-white/10 hidden md:block"></div>
+            <div class="flex-1 text-center md:text-left">
+                <div class="font-heading font-black text-4xl text-warning-amber">4.9★</div>
+                <div class="text-xs uppercase tracking-widest text-on-primary/40 font-sans">Rating Komunitas</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- D. TESTIMONIAL SECTION -->
+    <section class="py-32 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20">
+            <h2 class="font-heading text-4xl font-black italic" data-aos="fade-up">Suara Penjelajah</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-6xl font-heading text-warning-amber/20 mb-6">"</div>
+                <p class="italic text-on-primary/70 text-sm leading-relaxed font-sans mb-6">Ekspedisi Dune Walker mengubah cara saya memandang keheningan. Pengalaman yang tidak akan pernah terlupakan.</p>
+                <div>
+                    <div class="font-heading font-bold text-sm">Reza Mahendra</div>
+                    <div class="text-on-primary/30 text-xs">Bandung — Sahara Expedition 2025</div>
+                </div>
+            </div>
+            <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-6xl font-heading text-warning-amber/20 mb-6">"</div>
+                <p class="italic text-on-primary/70 text-sm leading-relaxed font-sans mb-6">Gear list mereka benar-benar akurat dan menyelamatkan nyawa. Tidak berlebihan.</p>
+                <div>
+                    <div class="font-heading font-bold text-sm">Siti Nuraini</div>
+                    <div class="text-on-primary/30 text-xs">Surabaya — Alpine Peak 2024</div>
+                </div>
+            </div>
+            <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="text-6xl font-heading text-warning-amber/20 mb-6">"</div>
+                <p class="italic text-on-primary/70 text-sm leading-relaxed font-sans mb-6">Komunitas Pathfinder adalah keluarga baru saya. Solid, informatif, dan selalu siap membantu.</p>
+                <div>
+                    <div class="font-heading font-bold text-sm">Bagas Prakoso</div>
+                    <div class="text-on-primary/30 text-xs">Yogyakarta — Nordic Water 2025</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION (Restrukturisasi dari Help) -->
+    <section id="about" class="py-32 bg-primary-container/20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <span class="text-warning-amber text-xs font-bold tracking-[0.5em] uppercase mb-4 block">Tentang Kami</span>
+                <h2 class="font-heading text-4xl font-black mb-4 italic">Di Balik Setiap Petualangan</h2>
+                <p class="text-on-primary/50 font-sans max-w-2xl mx-auto">Adventure Journal lahir dari keyakinan bahwa alam liar adalah guru terbaik untuk memahami diri sendiri.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Kiri: Narasi Filosofis & Visi Misi -->
+                <div class="space-y-8" data-aos="fade-right">
+                    <div class="glass p-10 rounded-[2.5rem]">
+                        <span class="material-symbols-outlined text-4xl text-warning-amber mb-4 block">auto_stories</span>
+                        <h3 class="font-heading font-bold text-2xl mb-4">Filosofi Kami</h3>
+                        <p class="text-on-primary/60 text-sm leading-relaxed font-sans mb-4">
+                            Kami percaya bahwa petualangan sejati bukanlah tentang menaklukkan alam, melainkan menaklukkan diri sendiri. Setiap langkah di medan yang tak dikenal adalah cerminan dari perjalanan batin yang lebih dalam.
+                        </p>
+                        <p class="text-on-primary/60 text-sm leading-relaxed font-sans">
+                            Sejak 2018, kami telah mendokumentasikan lebih dari 120 destinasi ekstrem di seluruh dunia — dari puncak es Himalaya hingga dasar gua terdalam Papua — dengan satu tujuan: membagikan pengetahuan yang menyelamatkan nyawa dan menginspirasi keberanian.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="glass p-8 rounded-2xl">
+                            <h4 class="font-heading font-bold text-warning-amber mb-2">Visi</h4>
+                            <p class="text-on-primary/50 text-xs leading-relaxed font-sans">Menjadi platform referensi utama bagi komunitas penjelajah Indonesia yang mengedepankan keselamatan, keberlanjutan, dan penghormatan terhadap alam.</p>
+                        </div>
+                        <div class="glass p-8 rounded-2xl">
+                            <h4 class="font-heading font-bold text-warning-amber mb-2">Misi</h4>
+                            <p class="text-on-primary/50 text-xs leading-relaxed font-sans">Mendokumentasikan setiap sudut dunia dengan akurasi ilmiah, membangun komunitas yang saling mendukung, dan mengedukasi generasi baru penjelajah yang bertanggung jawab.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Kanan: Grid Nilai Utama & Visual Card -->
+                <div class="space-y-6" data-aos="fade-left">
+                    <div class="glass rounded-[2.5rem] overflow-hidden">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800" alt="Tim Adventure Journal" class="w-full h-full object-cover opacity-70">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary-container via-transparent to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <span class="bg-warning-amber text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Tim Lapangan</span>
+                                <h4 class="font-heading font-bold text-xl mt-2">12 Explorers. 1 Vision.</h4>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <p class="text-on-primary/50 text-sm leading-relaxed font-sans">
+                                Tim kami terdiri dari guide bersertifikat internasional, fotografer alam liar, dan penulis survival yang telah menghabiskan total lebih dari 40 tahun gabungan di lapangan.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass p-6 rounded-2xl text-center">
+                            <span class="material-symbols-outlined text-3xl text-warning-amber mb-2 block">eco</span>
+                            <h5 class="font-heading font-bold text-sm mb-1">Leave No Trace</h5>
+                            <p class="text-on-primary/40 text-[10px] font-sans">Prinsip konservasi utama dalam setiap ekspedisi.</p>
+                        </div>
+                        <div class="glass p-6 rounded-2xl text-center">
+                            <span class="material-symbols-outlined text-3xl text-warning-amber mb-2 block">health_and_safety</span>
+                            <h5 class="font-heading font-bold text-sm mb-1">Safety First</h5>
+                            <p class="text-on-primary/40 text-[10px] font-sans">Protokol keselamatan berstandar internasional.</p>
+                        </div>
+                        <div class="glass p-6 rounded-2xl text-center">
+                            <span class="material-symbols-outlined text-3xl text-warning-amber mb-2 block">school</span>
+                            <h5 class="font-heading font-bold text-sm mb-1">Edukatif</h5>
+                            <p class="text-on-primary/40 text-[10px] font-sans">Konten yang diverifikasi oleh ahli terkini.</p>
+                        </div>
+                        <div class="glass p-6 rounded-2xl text-center">
+                            <span class="material-symbols-outlined text-3xl text-warning-amber mb-2 block">diversity_3</span>
+                            <h5 class="font-heading font-bold text-sm mb-1">Inklusif</h5>
+                            <p class="text-on-primary/40 text-[10px] font-sans">Komunitas terbuka untuk semua level.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="py-32 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="font-heading text-4xl font-black mb-4 italic">Informasi Membership</h2>
+            <p class="text-on-primary/50 font-sans">Daftar harga akses konten premium dan layanan komunitas.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass p-10 rounded-[2.5rem] border border-white/5" data-aos="fade-up">
+                <h3 class="font-heading font-bold text-xl mb-2">Explorer</h3>
+                <div class="text-3xl font-black text-warning-amber mb-6">Gratis</div>
+                <ul class="space-y-4 text-sm text-on-primary/40 font-sans mb-10">
+                    <li>• Akses artikel publik</li>
+                    <li>• Buletin mingguan</li>
+                    <li>• Galeri foto dasar</li>
+                </ul>
+                <p class="text-[10px] uppercase font-bold tracking-widest text-on-primary/20">Tersedia untuk semua</p>
+            </div>
+            <div class="glass p-10 rounded-[2.5rem] border border-warning-amber/20 bg-warning-amber/5" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="font-heading font-bold text-xl mb-2">Pathfinder</h3>
+                <div class="text-3xl font-black text-warning-amber mb-6">Rp 150k <span class="text-xs font-normal text-on-primary/30">/bulan</span></div>
+                <ul class="space-y-4 text-sm text-on-primary/60 font-sans mb-10">
+                    <li>• Semua fitur Explorer</li>
+                    <li>• Video dokumenter 4K</li>
+                    <li>• Gear review eksklusif</li>
+                </ul>
+                <p class="text-[10px] uppercase font-bold tracking-widest text-warning-amber/50">Hubungi CS untuk aktivasi</p>
+            </div>
+            <div class="glass p-10 rounded-[2.5rem] border border-white/5" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="font-heading font-bold text-xl mb-2">Summit</h3>
+                <div class="text-3xl font-black text-warning-amber mb-6">Rp 450k <span class="text-xs font-normal text-on-primary/30">/bulan</span></div>
+                <ul class="space-y-4 text-sm text-on-primary/40 font-sans mb-10">
+                    <li>• Semua fitur Pathfinder</li>
+                    <li>• Sesi tanya jawab ahli</li>
+                    <li>• Prioritas slot ekspedisi</li>
+                </ul>
+                <p class="text-[10px] uppercase font-bold tracking-widest text-on-primary/20">Hubungi CS untuk aktivasi</p>
+            </div>
+        </div>
+        <p class="text-center mt-12 text-[10px] uppercase tracking-[0.2em] text-on-primary/30 italic">
+            *Harga di atas adalah estimasi. Hubungi bagian kemitraan untuk detail lebih lanjut.
+        </p>
+    </section>
+
+    <!-- E. CTA BANNER -->
+    <section class="py-32">
+        <div class="glass bg-gradient-to-r from-warning-amber/10 to-transparent rounded-[3rem] px-16 py-20 max-w-5xl mx-auto text-center" data-aos="zoom-in">
+            <span class="text-warning-amber text-[13px] font-bold uppercase tracking-widest block mb-4">MULAI SEKARANG</span>
+            <h2 class="font-heading font-black text-5xl italic mb-6 leading-tight">Petualangan Berikutnya Menanti Anda.</h2>
+            <p class="text-on-primary/50 text-lg mb-12 font-sans max-w-2xl mx-auto leading-relaxed">Bergabunglah dengan komunitas penjelajah terbesar di Indonesia.</p>
+            <a href="#contact" class="bg-warning-amber text-primary px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[11px] inline-block hover:scale-105 transition-transform duration-300">Hubungi Kami</a>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER (4 Social Icons) -->
+<footer id="contact" class="bg-black pt-24 pb-12 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-20 mb-20">
+        <div>
+            <div class="font-heading text-2xl font-black text-warning-amber mb-6">Adventure Journal.</div>
+            <p class="text-on-primary/30 text-sm leading-relaxed font-sans italic">"Menemukan arti keberanian dalam setiap jengkal alam yang liar."</p>
+        </div>
+        <div>
+            <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-warning-amber mb-8">Social Connection</h4>
+            <div class="flex gap-4">
+                <a href="#" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-warning-amber hover:text-primary transition-all" aria-label="Instagram">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram icon" class="w-5 grayscale brightness-200">
+                </a>
+                <a href="#" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-warning-amber hover:text-primary transition-all" aria-label="Twitter">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Twitter icon" class="w-5 grayscale brightness-200">
+                </a>
+                <a href="#" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-warning-amber hover:text-primary transition-all" aria-label="YouTube">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3938/3938055.png" alt="YouTube icon" class="w-5 grayscale brightness-200">
+                </a>
+                <a href="#" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-warning-amber hover:text-primary transition-all" aria-label="LinkedIn">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn icon" class="w-5 grayscale brightness-200">
+                </a>
+            </div>
+        </div>
+        <div>
+            <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-warning-amber mb-8">Basecamp Office</h4>
+            <p class="text-on-primary/40 text-sm font-sans">Summit Tower, Lt. 12<br>Jakarta Selatan, Indonesia<br>contact@adventure.id</p>
+        </div>
+    </div>
+    <div class="text-center text-[10px] text-on-primary/20 uppercase tracking-[0.4em] pt-12 border-t border-white/5">
+        © <span id="year"></span> Adventure Journal — Static Project.
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true, offset: 80 });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+    // Mobile menu links close menu when clicked
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.add('hidden');
+        });
+    });
+
+    // Highlight active nav link on scroll
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
+        let current = "";
+        sections.forEach((s) => {
+            if (window.scrollY >= (s.offsetTop - 120)) current = s.getAttribute("id");
+        });
+        navLinks.forEach((l) => {
+            l.classList.remove("active");
+            if (l.getAttribute("href").includes(current)) l.classList.add("active");
+        });
+    });
+</script>
+</body>
+</html>'''
+
