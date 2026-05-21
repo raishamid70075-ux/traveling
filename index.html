@@ -1,22 +1,13 @@
-
 <!DOCTYPE html>
-
 <html class="dark scroll-smooth" lang="id">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    
     <title>Adventure Journal — Inspirasi Penjelajahan Alam</title>
     <meta name="description" content="Informasi ekspedisi, panduan petualangan, dan daftar perlengkapan terbaik."/>
-    
     <link rel="icon" type="image/svg+xml" href="https://cdn-icons-png.flaticon.com/512/826/826070.png"/>
-
-    <!-- Fonts: Poppins (Heading) & Lato (Body) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,700;0,900;1,300&family=Lato:wght@400;700&family=Material+Symbols+Outlined:wght@300&display=swap" rel="stylesheet"/>
-    
-    <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -37,18 +28,19 @@
             }
         }
     </script>
-<style>
+    <style>
         html, body { overflow-x: hidden; }
-        .glass { 
 
-            background: rgba(255, 255, 255, 0.04); 
-            backdrop-filter: blur(20px); 
+        /* ── GLASS ── */
+        .glass {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
-        .nav-link.active { color: #F59E0B; }
-        
+
+        /* ── HERO ── */
         .hero-title {
             font-family: 'Poppins', sans-serif;
             letter-spacing: -0.02em;
@@ -58,38 +50,177 @@
         details summary::-webkit-details-marker { display: none; }
         summary:focus { outline: none; }
 
-       
+        /* ═══════════════════════════════════════
+           NAVBAR — REDESIGN
+        ═══════════════════════════════════════ */
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            /* Samakan warna navbar saat di home dengan saat di-scroll */
+            background: rgba(13, 20, 38, 0.88);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(245, 158, 11, 0.12);
+            box-shadow: 0 8px 40px rgba(13, 20, 38, 0.88);
+        }
+
+
+        #navbar.scrolled {
+            background: rgba(13, 20, 38, 0.88);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(245, 158, 11, 0.12);
+            box-shadow: 0 8px 40px rgba(13, 20, 38, 0.88);
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        /* Nav links — underline slide-in effect */
+        .nav-link {
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.25s ease;
+            padding-bottom: 3px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 1.5px;
+            background: #F59E0B;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-link:hover { color: #F59E0B; }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link.active { color: #F59E0B; }
+        .nav-link.active::after { width: 100%; }
+
+        /* CTA Button */
+        .nav-cta {
+            font-family: 'Poppins', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            border: 1.5px solid #F59E0B;
+            color: #F59E0B;
+            padding: 8px 20px;
+            border-radius: 999px;
+            transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+        }
+        .nav-cta:hover {
+            background: #F59E0B;
+            color: #000;
+            transform: scale(1.04);
+        }
+
+        /* Mobile menu */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
+            background: rgba(10, 16, 30, 0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(245,158,11,0.1);
+        }
+        #mobile-menu.open {
+            max-height: 420px;
+            opacity: 1;
+        }
+        .mobile-link {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            padding: 16px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: color 0.2s ease, padding-left 0.2s ease;
+        }
+        .mobile-link:hover { color: #F59E0B; padding-left: 30px; }
+        .mobile-link.active { color: #F59E0B; }
+
+        /* Hamburger icon morph */
+        #hamburger-icon { transition: transform 0.3s ease; }
+        #hamburger-icon.open { transform: rotate(90deg); }
     </style>
 </head>
 
 <body class="bg-primary text-on-primary antialiased min-h-screen flex flex-col font-sans">
 
-<!-- Navbar -->
-<nav class="bg-primary-container/80 backdrop-blur-md sticky top-0 border-b border-white/10 z-[100]">
-    <div class="flex justify-between items-center w-full px-6 md:px-16 py-6 max-w-7xl mx-auto">
-        <div class="font-heading text-xl font-black text-warning-amber tracking-tighter">Adventure Journal.</div>
-        
-        <div class="hidden md:flex items-center gap-10 font-bold text-[11px] uppercase tracking-[0.2em]">
-            <a class="nav-link hover:text-warning-amber transition-colors duration-300" href="#home">Home</a>
-            <a class="nav-link hover:text-warning-amber transition-colors duration-300" href="#expeditions">Expeditions</a>
-            <a class="nav-link hover:text-warning-amber transition-colors duration-300" href="#about">About</a>
-            <a class="nav-link hover:text-warning-amber transition-colors duration-300" href="#pricing">Pricing</a>
-            <a class="nav-link hover:text-warning-amber transition-colors duration-300" href="#contact">Contact</a>
+<!-- ═══════════════════════════════════════
+     NAVBAR — FIXED, SCROLL-AWARE
+═══════════════════════════════════════ -->
+<nav id="navbar">
+    <div class="flex justify-between items-center w-full px-6 md:px-16 max-w-7xl mx-auto">
+
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-3 group">
+            <img
+                src="https://myasset-nine.vercel.app/asset/foto3.png"
+                alt="Logo Adventure Journal"
+                class="h-10 w-10 object-contain group-hover:scale-110 transition-transform duration-300"
+            />
+            <span class="font-heading text-base font-black text-warning-amber tracking-tight group-hover:text-white transition-colors duration-300">
+                Adventure Journal.
+            </span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-9">
+            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link" href="#expeditions">Expeditions</a>
+            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="#pricing">Pricing</a>
+            <a class="nav-link" href="#contact">Contact</a>
         </div>
 
-        <button type="button" id="menu-toggle" class="md:hidden text-on-primary">
-            <span class="material-symbols-outlined text-3xl">menu</span>
-        </button>
+        <!-- Right: CTA + Hamburger -->
+        <div class="flex items-center gap-4">
+            <a href="#pricing" class="nav-cta hidden md:inline-block">Join Now</a>
+            <button
+                type="button"
+                id="menu-toggle"
+                class="md:hidden text-on-primary/70 hover:text-warning-amber transition-colors p-1"
+                aria-label="Toggle menu"
+            >
+                <span id="hamburger-icon" class="material-symbols-outlined text-[28px]">menu</span>
+            </button>
+        </div>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-primary-container border-b border-white/10 px-6 py-8 flex flex-col gap-6 font-bold uppercase tracking-widest text-xs">
-        <a href="#home">Home</a>
-        <a href="#expeditions">Expeditions</a>
-        <a href="#about">About</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu">
+        <a class="mobile-link" href="#home">Home</a>
+        <a class="mobile-link" href="#expeditions">Expeditions</a>
+        <a class="mobile-link" href="#about">About</a>
+        <a class="mobile-link" href="#pricing">Pricing</a>
+        <a class="mobile-link" href="#contact">Contact</a>
+        <div class="px-6 py-5">
+            <a href="#pricing" class="nav-cta inline-block">Join Now</a>
+        </div>
     </div>
 </nav>
+
+<!-- Offset for fixed navbar -->
+<div class="h-[72px]"></div>
 
 <main class="flex-grow">
     <!-- HERO SECTION -->
@@ -110,7 +241,7 @@
         </div>
     </section>
 
-    <!-- EXPEDITIONS (4 Cards) -->
+    <!-- EXPEDITIONS -->
     <section id="expeditions" class="py-32 max-w-7xl mx-auto px-6">
         <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <h2 class="font-heading text-4xl font-black italic" data-aos="fade-right">Featured Expeditions</h2>
@@ -119,7 +250,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div class="group glass rounded-[2rem] overflow-hidden" data-aos="fade-up" data-aos-delay="100">
                 <div class="h-60 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400" alt="Alpine Peak Expedition" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400" alt="Alpine Peak" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                 </div>
                 <div class="p-8">
                     <h4 class="font-heading font-bold text-lg mb-2">Alpine Peak</h4>
@@ -129,7 +260,7 @@
             </div>
             <div class="group glass rounded-[2rem] overflow-hidden" data-aos="fade-up" data-aos-delay="200">
                 <div class="h-60 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=400" alt="Nordic Fjords Kayaking" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=400" alt="Nordic Water" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                 </div>
                 <div class="p-8">
                     <h4 class="font-heading font-bold text-lg mb-2">Nordic Water</h4>
@@ -139,7 +270,7 @@
             </div>
             <div class="group glass rounded-[2rem] overflow-hidden" data-aos="fade-up" data-aos-delay="300">
                 <div class="h-60 overflow-hidden">
-                    <img src="https://myasset-nine.vercel.app/asset/swiss.jpg" alt="Sahara Desert Navigation" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <img src="https://myasset-nine.vercel.app/asset/swiss.jpg" alt="Dune Walker" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                 </div>
                 <div class="p-8">
                     <h4 class="font-heading font-bold text-lg mb-2">Dune Walker</h4>
@@ -149,7 +280,7 @@
             </div>
             <div class="group glass rounded-[2rem] overflow-hidden" data-aos="fade-up" data-aos-delay="400">
                 <div class="h-60 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?auto=format&fit=crop&w=400" alt="Amazon Jungle Survival" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?auto=format&fit=crop&w=400" alt="Green Hell" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                 </div>
                 <div class="p-8">
                     <h4 class="font-heading font-bold text-lg mb-2">Green Hell</h4>
@@ -160,13 +291,13 @@
         </div>
     </section>
 
-    <!-- A. FEATURE HIGHLIGHT STRIP -->
+    <!-- FEATURE HIGHLIGHT -->
     <section class="py-32 max-w-7xl mx-auto px-6">
         <div class="text-center mb-20">
             <h2 class="font-heading text-4xl font-black italic mb-4" data-aos="fade-up">Mengapa Adventure Journal?</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="100">
-            <div class="glass p-10 rounded-[2.5rem] text-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="100">
                 <span class="material-symbols-outlined text-6xl text-warning-amber mb-6 block">explore</span>
                 <h3 class="font-heading font-bold text-xl mb-4">Destinasi Terkurasi</h3>
                 <p class="text-sm text-on-primary/60 font-sans">Hanya lokasi yang telah diverifikasi oleh tim lapangan kami selama 10 tahun ekspedisi.</p>
@@ -184,7 +315,7 @@
         </div>
     </section>
 
-    <!-- B. EDITORIAL / BLOG PREVIEW -->
+    <!-- BLOG PREVIEW -->
     <section class="py-32 bg-primary-container/20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20">
@@ -223,7 +354,7 @@
         </div>
     </section>
 
-    <!-- C. STATISTICS COUNTER BAR -->
+    <!-- STATISTICS -->
     <section class="py-20 bg-primary-container">
         <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24" data-aos="zoom-in">
             <div class="flex-1 text-center md:text-left">
@@ -237,8 +368,8 @@
             </div>
             <div class="w-px h-12 bg-white/10 hidden md:block"></div>
             <div class="flex-1 text-center md:text-left">
-                <div class="font-heading font-black text-4xl text-warning-amber">8 Tahun</div>
-                <div class="text-xs uppercase tracking-widest text-on-primary/40 font-sans">Pengalaman Lapangan</div>
+                <div class="font-heading font-black text-4xl text-warning-amber">8+</div>
+                <div class="text-xs uppercase tracking-widest text-on-primary/40 font-sans">Tahun Ekspedisi</div>
             </div>
             <div class="w-px h-12 bg-white/10 hidden md:block"></div>
             <div class="flex-1 text-center md:text-left">
@@ -248,7 +379,7 @@
         </div>
     </section>
 
-    <!-- D. TESTIMONIAL SECTION -->
+    <!-- TESTIMONIAL -->
     <section class="py-32 max-w-7xl mx-auto px-6">
         <div class="text-center mb-20">
             <h2 class="font-heading text-4xl font-black italic" data-aos="fade-up">Suara Penjelajah</h2>
@@ -281,7 +412,7 @@
         </div>
     </section>
 
-    <!-- ABOUT SECTION (Restrukturisasi dari Help) -->
+    <!-- ABOUT -->
     <section id="about" class="py-32 bg-primary-container/20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20">
@@ -289,34 +420,25 @@
                 <h2 class="font-heading text-4xl font-black mb-4 italic">Di Balik Setiap Petualangan</h2>
                 <p class="text-on-primary/50 font-sans max-w-2xl mx-auto">Adventure Journal lahir dari keyakinan bahwa alam liar adalah guru terbaik untuk memahami diri sendiri.</p>
             </div>
-            
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Kiri: Narasi Filosofis & Visi Misi -->
                 <div class="space-y-8" data-aos="fade-right">
                     <div class="glass p-10 rounded-[2.5rem]">
                         <span class="material-symbols-outlined text-4xl text-warning-amber mb-4 block">auto_stories</span>
                         <h3 class="font-heading font-bold text-2xl mb-4">Filosofi Kami</h3>
-                        <p class="text-on-primary/60 text-sm leading-relaxed font-sans mb-4">
-                            Kami percaya bahwa petualangan sejati bukanlah tentang menaklukkan alam, melainkan menaklukkan diri sendiri. Setiap langkah di medan yang tak dikenal adalah cerminan dari perjalanan batin yang lebih dalam.
-                        </p>
-                        <p class="text-on-primary/60 text-sm leading-relaxed font-sans">
-                            Sejak 2018, kami telah mendokumentasikan lebih dari 120 destinasi ekstrem di seluruh dunia — dari puncak es Himalaya hingga dasar gua terdalam Papua — dengan satu tujuan: membagikan pengetahuan yang menyelamatkan nyawa dan menginspirasi keberanian.
-                        </p>
+                        <p class="text-on-primary/60 text-sm leading-relaxed font-sans mb-4">Kami percaya bahwa petualangan sejati bukanlah tentang menaklukkan alam, melainkan menaklukkan diri sendiri.</p>
+                        <p class="text-on-primary/60 text-sm leading-relaxed font-sans">Sejak 2018, kami telah mendokumentasikan lebih dari 120 destinasi ekstrem di seluruh dunia dengan satu tujuan: membagikan pengetahuan yang menyelamatkan nyawa dan menginspirasi keberanian.</p>
                     </div>
-                    
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div class="glass p-8 rounded-2xl">
                             <h4 class="font-heading font-bold text-warning-amber mb-2">Visi</h4>
-                            <p class="text-on-primary/50 text-xs leading-relaxed font-sans">Menjadi platform referensi utama bagi komunitas penjelajah Indonesia yang mengedepankan keselamatan, keberlanjutan, dan penghormatan terhadap alam.</p>
+                            <p class="text-on-primary/50 text-xs leading-relaxed font-sans">Menjadi platform referensi utama bagi komunitas penjelajah Indonesia yang mengedepankan keselamatan dan keberlanjutan.</p>
                         </div>
                         <div class="glass p-8 rounded-2xl">
                             <h4 class="font-heading font-bold text-warning-amber mb-2">Misi</h4>
-                            <p class="text-on-primary/50 text-xs leading-relaxed font-sans">Mendokumentasikan setiap sudut dunia dengan akurasi ilmiah, membangun komunitas yang saling mendukung, dan mengedukasi generasi baru penjelajah yang bertanggung jawab.</p>
+                            <p class="text-on-primary/50 text-xs leading-relaxed font-sans">Mendokumentasikan setiap sudut dunia dengan akurasi ilmiah dan membangun komunitas penjelajah yang bertanggung jawab.</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Kanan: Grid Nilai Utama & Visual Card -->
                 <div class="space-y-6" data-aos="fade-left">
                     <div class="glass rounded-[2.5rem] overflow-hidden">
                         <div class="h-64 overflow-hidden relative">
@@ -328,12 +450,9 @@
                             </div>
                         </div>
                         <div class="p-8">
-                            <p class="text-on-primary/50 text-sm leading-relaxed font-sans">
-                                Tim kami terdiri dari guide bersertifikat internasional, fotografer alam liar, dan penulis survival yang telah menghabiskan total lebih dari 40 tahun gabungan di lapangan.
-                            </p>
+                            <p class="text-on-primary/50 text-sm leading-relaxed font-sans">Tim kami terdiri dari guide bersertifikat internasional, fotografer alam liar, dan penulis survival.</p>
                         </div>
                     </div>
-                    
                     <div class="grid grid-cols-2 gap-4">
                         <div class="glass p-6 rounded-2xl text-center">
                             <span class="material-symbols-outlined text-3xl text-warning-amber mb-2 block">eco</span>
@@ -361,7 +480,7 @@
         </div>
     </section>
 
-    <!-- PRICING SECTION -->
+    <!-- PRICING -->
     <section id="pricing" class="py-32 max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
             <h2 class="font-heading text-4xl font-black mb-4 italic">Informasi Membership</h2>
@@ -404,7 +523,7 @@
         </p>
     </section>
 
-    <!-- E. CTA BANNER -->
+    <!-- CTA BANNER -->
     <section class="py-32">
         <div class="glass bg-gradient-to-r from-warning-amber/10 to-transparent rounded-[3rem] px-16 py-20 max-w-5xl mx-auto text-center" data-aos="zoom-in">
             <span class="text-warning-amber text-[13px] font-bold uppercase tracking-widest block mb-4">MULAI SEKARANG</span>
@@ -415,27 +534,32 @@
     </section>
 </main>
 
-<!-- FOOTER (4 Social Icons) -->
+<!-- FOOTER -->
 <footer id="contact" class="bg-black pt-24 pb-12 border-t border-white/5">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-20 mb-20">
         <div>
-            <div class="font-heading text-2xl font-black text-warning-amber mb-6">Adventure Journal.</div>
+            <div class="flex items-center gap-4 mb-6">
+                <img src="https://myasset-nine.vercel.app/asset/foto3.png"
+                    alt="Logo"
+                    class="h-24 w-24 object-contain"/>
+                <span class="font-heading text-2xl font-black text-warning-amber">Adventure Journal.</span>
+            </div>
             <p class="text-on-primary/30 text-sm leading-relaxed font-sans italic">"Menemukan arti keberanian dalam setiap jengkal alam yang liar."</p>
         </div>
         <div>
             <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-warning-amber mb-8">Social Connection</h4>
             <div class="flex gap-4">
                 <a href="#" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-warning-amber hover:text-primary transition-all" aria-label="Instagram">
-                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram icon" class="w-5 grayscale brightness-200">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="w-5 grayscale brightness-200">
                 </a>
                 <a href="#" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-warning-amber hover:text-primary transition-all" aria-label="Twitter">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Twitter icon" class="w-5 grayscale brightness-200">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Twitter" class="w-5 grayscale brightness-200">
                 </a>
                 <a href="#" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-warning-amber hover:text-primary transition-all" aria-label="YouTube">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3938/3938055.png" alt="YouTube icon" class="w-5 grayscale brightness-200">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3938/3938055.png" alt="YouTube" class="w-5 grayscale brightness-200">
                 </a>
                 <a href="#" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-warning-amber hover:text-primary transition-all" aria-label="LinkedIn">
-                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn icon" class="w-5 grayscale brightness-200">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="w-5 grayscale brightness-200">
                 </a>
             </div>
         </div>
@@ -453,34 +577,70 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({ duration: 800, once: true, offset: 80 });
-
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const toggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('mobile-menu');
-    toggle.addEventListener('click', () => menu.classList.toggle('hidden'));
+    /* ── Navbar scroll-aware ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
 
-    // Mobile menu links close menu when clicked
+    /* ── Mobile menu toggle ── */
+    const toggle    = document.getElementById('menu-toggle');
+    const menu      = document.getElementById('mobile-menu');
+    const hamburger = document.getElementById('hamburger-icon');
+
+    toggle.addEventListener('click', () => {
+        const isOpen = menu.classList.toggle('open');
+        hamburger.textContent = isOpen ? 'close' : 'menu';
+        hamburger.classList.toggle('open', isOpen);
+    });
+
     document.querySelectorAll('#mobile-menu a').forEach(link => {
         link.addEventListener('click', () => {
-            menu.classList.add('hidden');
+            menu.classList.remove('open');
+            hamburger.textContent = 'menu';
+            hamburger.classList.remove('open');
         });
     });
 
-    // Highlight active nav link on scroll
-    window.addEventListener('scroll', () => {
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".nav-link");
-        let current = "";
-        sections.forEach((s) => {
-            if (window.scrollY >= (s.offsetTop - 120)) current = s.getAttribute("id");
+    /* ── Active link on scroll ── */
+    const sections    = document.querySelectorAll('section[id], footer[id]');
+    const navLinks    = document.querySelectorAll('.nav-link');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function updateActiveLink() {
+        // Jika sudah di paling bawah halaman → paksa aktif section terakhir
+        const atBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 10;
+
+        let current = '';
+
+        if (atBottom) {
+            current = sections[sections.length - 1].getAttribute('id');
+        } else {
+            sections.forEach(s => {
+                const rect = s.getBoundingClientRect();
+                // Section dianggap aktif jika bagian atasnya sudah melewati 40% tinggi viewport
+                if (rect.top <= window.innerHeight * 0.4) {
+                    current = s.getAttribute('id');
+                }
+            });
+        }
+
+        [...navLinks, ...mobileLinks].forEach(l => {
+            l.classList.remove('active');
+            if (current && l.getAttribute('href')?.includes(current)) {
+                l.classList.add('active');
+            }
         });
-        navLinks.forEach((l) => {
-            l.classList.remove("active");
-            if (l.getAttribute("href").includes(current)) l.classList.add("active");
-        });
-    });
+    }
+
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+    updateActiveLink();
 </script>
 </body>
-</html>'''
-
+</html>
